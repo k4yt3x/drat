@@ -6,8 +6,9 @@ A simple RAT written in Python that communicates with the C&C server over DNS re
 
 - https://tools.ietf.org/html/rfc1035
 - https://tools.ietf.org/html/rfc2535
+- https://routley.io/posts/hand-writing-dns-messages/
 
-## Packets
+## Protocol Format
 
 ```text
                                 1  1  1  1  1  1

