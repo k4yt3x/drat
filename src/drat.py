@@ -1,9 +1,14 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 """
 Name: DRAT Client
 Author: K4YT3X
 Date Created: April 7, 2021
 Last Updated: April 13, 2021
+
+Licensed under the GNU General Public License Version 3 (GNU GPL v3),
+    available at: https://www.gnu.org/licenses/gpl-3.0.txt
+(C) 2021 K4YT3X
 """
 
 # local imports
